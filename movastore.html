@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOVA — Modern Essentials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F4EF;
+    --dark: #141210;
+    --mid: #3A3530;
+    --accent: #C8A96E;
+    --light-border: #E2DDD6;
+    --red: #C84B3C;
+    --green: #2D7A4F;
+    --card-bg: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .announce {
+    background: var(--dark);
+    color: var(--accent);
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,244,239,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--light-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 68px;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  nav { display: flex; gap: 32px; }
+  nav a {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  .header-actions { display: flex; align-items: center; gap: 20px; }
+  .cart-btn {
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .cart-btn:hover { background: var(--accent); }
+  .cart-count {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--dark);
+    border-radius: 50%;
+    width: 18px; height: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 18px;
+    margin-left: 8px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 540px;
+    overflow: hidden;
+  }
+  .hero-text {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream);
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+  }
+  .btn-primary {
+    background: var(--dark);
+    color: #fff;
+    padding: 15px 36px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    padding: 14px 36px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--dark);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--dark); color: #fff; }
+
+  .hero-visual {
+    background: linear-gradient(135deg, #2A2520 0%, #1A1510 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(200,169,110,0.25) 0%, transparent 60%);
+  }
+  .hero-emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-item-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(200,169,110,0.3);
+    padding: 20px;
+    text-align: center;
+    border-radius: 2px;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  .hero-item-card:nth-child(2) { animation-delay: 0.5s; }
+  .hero-item-card:nth-child(3) { animation-delay: 1s; }
+  .hero-item-card:nth-child(4) { animation-delay: 1.5s; }
+  .hero-item-card:nth-child(5) { animation-delay: 2s; }
+  .hero-item-card:nth-child(6) { animation-delay: 2.5s; }
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .hero-item-card .emoji { font-size: 32px; display: block; margin-bottom: 8px; }
+  .hero-item-card .label { color: rgba(255,255,255,0.6); font-size: 11px; letter-spacing: 0.1em; }
+
+  /* ─── TRUST STRIP ─── */
+  .trust-strip {
+    border-top: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--light-border);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .trust-item {
+    flex: 1;
+    padding: 22px 30px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-right: 1px solid var(--light-border);
+    max-width: 320px;
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-icon { font-size: 22px; }
+  .trust-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .trust-text span { font-size: 12px; color: var(--mid); }
+
+  /* ─── SECTION ─── */
+  section { padding: 80px 40px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 400;
+  }
+  .section-header a {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  /* ─── PRODUCT GRID ─── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 10px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .badge-sale { background: var(--red); color: #fff; }
+  .badge-new { background: var(--dark); color: #fff; }
+  .badge-hot { background: var(--accent); color: var(--dark); }
+
+  .quick-add {
+    position: absolute;
+    bottom: -44px;
+    left: 0; right: 0;
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: bottom 0.3s;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+  }
+  .product-card:hover .quick-add { bottom: 0; }
+
+  .product-info { padding: 18px 18px 22px; }
+  .product-category {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .product-name { font-size: 15px; font-weight: 400; margin-bottom: 10px; line-height: 1.4; }
+  .product-pricing { display: flex; align-items: center; gap: 10px; }
+  .price-current { font-size: 17px; font-weight: 500; color: var(--dark); }
+  .price-original { font-size: 14px; color: #999; text-decoration: line-through; }
+  .price-save { font-size: 12px; color: var(--green); font-weight: 500; }
+  .stars { color: var(--accent); font-size: 13px; margin-top: 8px; }
+  .reviews { color: #999; font-size: 12px; margin-left: 4px; }
+
+  /* ─── CATEGORIES ─── */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .category-tile {
+    background: var(--dark);
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+  .category-tile:hover { background: var(--accent); transform: scale(1.03); }
+  .category-tile .cat-icon { font-size: 36px; margin-bottom: 12px; }
+  .category-tile .cat-name {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .category-tile:hover .cat-name { color: var(--dark); }
+
+  /* ─── BANNER ─── */
+  .promo-banner {
+    background: var(--dark);
+    padding: 70px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin: 0 40px;
+  }
+  .promo-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(200,169,110,0.2) 0%, transparent 60%);
+  }
+  .promo-banner-text { position: relative; z-index: 1; }
+  .promo-banner-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .promo-banner-text p { color: rgba(255,255,255,0.6); font-size: 16px; font-weight: 300; }
+  .promo-banner-action { position: relative; z-index: 1; }
+  .promo-banner-action .big-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    color: var(--accent);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  /* ─── SHIPPING INFO ─── */
+  .shipping-section { background: #fff; }
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .shipping-card { padding: 36px; border: 1px solid var(--light-border); }
+  .shipping-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .shipping-card ul { list-style: none; }
+  .shipping-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-border);
+    font-size: 14px;
+    color: var(--mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .shipping-card ul li:last-child { border-bottom: none; }
+  .shipping-price { font-weight: 500; color: var(--dark); }
+  .free { color: var(--green); font-weight: 500; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 60px 40px 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo { color: rgba(255,255,255,0.9); display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 280px; font-weight: 300; }
+  footer h5 {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 12px; }
+  footer ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .payment-icons { display: flex; gap: 10px; font-size: 20px; }
+
+  /* ─── CART MODAL ─── */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+  .cart-panel {
+    position: fixed;
+    top: 0; right: -440px;
+    width: 440px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.15);
+  }
+  .cart-panel.open { right: 0; }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .cart-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; }
+  .close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+  .close-cart:hover { color: var(--dark); }
+
+  .cart-items { flex: 1; overflow-y: auto; padding: 20px 28px; }
+  .cart-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .cart-item-img {
+    width: 72px; height: 72px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-size: 14px; font-weight: 400; margin-bottom: 4px; }
+  .cart-item-price { font-size: 15px; font-weight: 500; color: var(--dark); }
+  .cart-item-remove {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.2s;
+  }
+  .cart-item-remove:hover { color: var(--red); }
+  .cart-qty { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+  .qty-btn {
+    width: 24px; height: 24px;
+    border: 1px solid var(--light-border);
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .qty-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
+
+  .cart-footer { padding: 20px 28px 28px; border-top: 1px solid var(--light-border); }
+  .cart-shipping-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--green);
+    background: rgba(45,122,79,0.08);
+    padding: 10px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+  .cart-total { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+  .cart-total.grand {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 12px;
+    border-top: 1px solid var(--light-border);
+    margin-top: 12px;
+  }
+  .checkout-btn {
+    width: 100%;
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 20px;
+    transition: background 0.2s;
+  }
+  .checkout-btn:hover { background: var(--accent); }
+
+  .empty-cart {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--mid);
+  }
+  .empty-cart .empty-icon { font-size: 56px; margin-bottom: 20px; }
+  .empty-cart p { font-size: 16px; margin-bottom: 6px; }
+  .empty-cart span { font-size: 13px; color: #aaa; }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--dark);
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.6s forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.12s; }
+  .fade-in:nth-child(3) { animation-delay: 0.19s; }
+  .fade-in:nth-child(4) { animation-delay: 0.26s; }
+  .fade-in:nth-child(5) { animation-delay: 0.33s; }
+  .fade-in:nth-child(6) { animation-delay: 0.4s; }
+  .fade-in:nth-child(7) { animation-delay: 0.47s; }
+  .fade-in:nth-child(8) { animation-delay: 0.54s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-text { padding: 50px 20px; }
+    .hero h1 { font-size: 44px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+    section { padding: 50px 20px; }
+    .promo-banner { margin: 0 20px; padding: 40px; flex-direction: column; gap: 24px; }
+    .shipping-grid { grid-template-columns: 1fr; }
+    .trust-strip { flex-wrap: wrap; }
+    .trust-item { flex: 50%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cart-panel { width: 100%; right: -100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">✦ Free shipping on orders over $49 · New arrivals every week ✦</div>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">MOVA</a>
+  <nav>
+    <a href="#bestsellers">Best Sellers</a>
+    <a href="#categories">Categories</a>
+    <a href="#shipping">Shipping</a>
+    <a href="#">New In</a>
+  </nav>
+  <div class="header-actions">
+    <button class="cart-btn" onclick="openCart()">
+      Cart <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">✦ Curated Global Finds</div>
+    <h1>Quality<br>Without<br>Compromise</h1>
+    <p>Top-rated products sourced from the world's best suppliers — delivered to your door with a price match guarantee.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <button class="btn-outline">View Lookbook</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-emoji-grid">
+      <div class="hero-item-card"><span class="emoji">💡</span><span class="label">Smart Home</span></div>
+      <div class="hero-item-card"><span class="emoji">🎧</span><span class="label">Audio</span></div>
+      <div class="hero-item-card"><span class="emoji">⌚</span><span class="label">Wearables</span></div>
+      <div class="hero-item-card"><span class="emoji">👜</span><span class="label">Fashion</span></div>
+      <div class="hero-item-card"><span class="emoji">🌿</span><span class="label">Wellness</span></div>
+      <div class="hero-item-card"><span class="emoji">🏠</span><span class="label">Home</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <span class="trust-icon">🚚</span>
+    <div class="trust-text">
+      <strong>Free Shipping Over $49</strong>
+      <span>Standard 7–14 days delivery</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🔄</span>
+    <div class="trust-text">
+      <strong>30-Day Returns</strong>
+      <span>No questions asked</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🔒</span>
+    <div class="trust-text">
+      <strong>Secure Checkout</strong>
+      <span>256-bit SSL encryption</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">⭐</span>
+    <div class="trust-text">
+      <strong>Top-Rated Products</strong>
+      <span>4.5★ average across all items</span>
+    </div>
+  </div>
+</div>
+
+<!-- BEST SELLERS -->
+<section id="bestsellers">
+  <div class="section-header">
+    <h2>Best Sellers</h2>
+    <a href="#">View all →</a>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories" style="padding-top:0">
+  <div class="section-header">
+    <h2>Shop by Category</h2>
+  </div>
+  <div class="categories-grid">
+    <a class="category-tile" href="#">
+      <span class="cat-icon">📱</span>
+      <span class="cat-name">Electronics</span>
+    </a>
+    <a class="category-tile" href="#">
+      <span class="cat-icon">👗</span>
+      <span class="cat-name">Fashion</span>
+    </a>
+    <a class="category-tile" href="#">
+      <span class="cat-icon">🏠</span>
+      <span class="cat-name">Home & Living</span>
+    </a>
+    <a class="category-tile" href="#">
+      <span class="cat-icon">💄</span>
+      <span class="cat-name">Beauty</span>
+    </a>
+    <a class="category-tile" href="#">
+      <span class="cat-icon">💪</span>
+      <span class="cat-name">Fitness</span>
+    </a>
+    <a class="category-tile" href="#">
+      <span class="cat-icon">🐾</span>
+      <span class="cat-name">Pets</span>
+    </a>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div class="promo-banner-text">
+    <h3>Summer Sale<br>Now Live</h3>
+    <p>Up to 60% off select items — this week only</p>
+  </div>
+  <div class="promo-banner-action">
+    <div class="big-price">–60%</div>
+    <button class="btn-primary">Claim Offer</button>
+  </div>
+</div>
+
+<!-- MORE PRODUCTS -->
+<section>
+  <div class="section-header">
+    <h2>New Arrivals</h2>
+    <a href="#">View all →</a>
+  </div>
+  <div class="products-grid" id="new-arrivals-grid"></div>
+</section>
+
+<!-- SHIPPING INFO -->
+<section id="shipping" class="shipping-section">
+  <div class="section-header">
+    <h2>Shipping & Delivery</h2>
+  </div>
+  <div class="shipping-grid">
+    <div class="shipping-card">
+      <h4>🌍 Standard Shipping</h4>
+      <ul>
+        <li><span>Orders under $49</span><span class="shipping-price">$4.99</span></li>
+        <li><span>Orders $49–$99</span><span class="free">FREE</span></li>
+        <li><span>Estimated time</span><span class="shipping-price">7–14 days</span></li>
+        <li><span>Tracking included</span><span class="shipping-price">✓</span></li>
+      </ul>
+    </div>
+    <div class="shipping-card">
+      <h4>⚡ Express Shipping</h4>
+      <ul>
+        <li><span>Any order size</span><span class="shipping-price">$12.99</span></li>
+        <li><span>Estimated time</span><span class="shipping-price">3–7 days</span></li>
+        <li><span>Priority handling</span><span class="shipping-price">✓</span></li>
+        <li><span>Tracking + updates</span><span class="shipping-price">✓</span></li>
+      </ul>
+    </div>
+    <div class="shipping-card">
+      <h4>🔄 Returns Policy</h4>
+      <ul>
+        <li><span>Return window</span><span class="shipping-price">30 days</span></li>
+        <li><span>Condition</span><span class="shipping-price">Unused, original packaging</span></li>
+        <li><span>Refund method</span><span class="shipping-price">Original payment</span></li>
+        <li><span>Damaged items</span><span class="free">Full replacement</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#">MOVA</a>
+      <p>Curating the world's best products and bringing them directly to you — no middlemen, no markups you don't understand.</p>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Help</h5>
+      <ul>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About MOVA</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Affiliates</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 MOVA. All rights reserved.</span>
+    <div class="payment-icons">💳 🍎 📱 🔐</div>
+    <span>Secure · Encrypted · Trusted</span>
+  </div>
+</footer>
+
+<!-- CART OVERLAY & PANEL -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="close-cart" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="empty-cart" id="empty-cart">
+      <div class="empty-icon">🛒</div>
+      <p>Your cart is empty</p>
+      <span>Add some items to get started</span>
+    </div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-shipping-note" id="shipping-note">Add $<span id="amount-to-free">49</span> more for free shipping!</div>
+    <div class="cart-total"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+    <div class="cart-total"><span>Shipping</span><span id="cart-shipping">$4.99</span></div>
+    <div class="cart-total grand"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <button class="checkout-btn">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── PRODUCT DATA ───
+const products = [
+  // BEST SELLERS
+  { id:1, name:"Wireless Noise-Cancelling Earbuds", cat:"Electronics", emoji:"🎧", price:34.99, original:79.99, save:56, stars:5, reviews:4821, badge:"hot", bg:"#1A1A2E", section:"best" },
+  { id:2, name:"LED Desk Lamp with USB Charging", cat:"Home & Office", emoji:"💡", price:24.99, original:49.99, save:50, stars:5, reviews:3102, badge:"sale", bg:"#0F2027", section:"best" },
+  { id:3, name:"Smart Fitness Tracker Watch", cat:"Wearables", emoji:"⌚", price:29.99, original:69.99, save:57, stars:4, reviews:6784, badge:"hot", bg:"#1B1B2F", section:"best" },
+  { id:4, name:"Portable Phone Stand & Holder", cat:"Accessories", emoji:"📱", price:12.99, original:24.99, save:48, stars:5, reviews:9203, badge:"", bg:"#16213E", section:"best" },
+  { id:5, name:"Minimalist Canvas Tote Bag", cat:"Fashion", emoji:"👜", price:18.99, original:39.99, save:53, stars:4, reviews:5641, badge:"new", bg:"#2D2D2D", section:"best" },
+  { id:6, name:"Electric Face Cleansing Brush", cat:"Beauty", emoji:"✨", price:22.99, original:54.99, save:58, stars:5, reviews:3387, badge:"hot", bg:"#1A1025", section:"best" },
+  { id:7, name:"Bamboo Kitchen Organizer Set", cat:"Home", emoji:"🏠", price:27.99, original:59.99, save:53, stars:4, reviews:2981, badge:"", bg:"#1B2631", section:"best" },
+  { id:8, name:"Posture Corrector Belt", cat:"Wellness", emoji:"💪", price:19.99, original:44.99, save:56, stars:4, reviews:7821, badge:"sale", bg:"#212F3D", section:"best" },
+  // NEW ARRIVALS
+  { id:9, name:"RGB Gaming Mouse Pad XL", cat:"Gaming", emoji:"🖱️", price:16.99, original:34.99, save:51, stars:5, reviews:1520, badge:"new", bg:"#1A0A2E", section:"new" },
+  { id:10, name:"Silk Sleep Eye Mask", cat:"Wellness", emoji:"😴", price:11.99, original:24.99, save:52, stars:5, reviews:4102, badge:"new", bg:"#1C1020", section:"new" },
+  { id:11, name:"Stainless Steel Water Bottle 1L", cat:"Lifestyle", emoji:"💧", price:21.99, original:44.99, save:51, stars:5, reviews:8821, badge:"new", bg:"#0B2545", section:"new" },
+  { id:12, name:"Pet Grooming Glove", cat:"Pets", emoji:"🐾", price:13.99, original:27.99, save:50, stars:4, reviews:3311, badge:"new", bg:"#1A2310", section:"new" },
+];
+
+// ─── CART STATE ───
+let cart = [];
+
+function renderStars(n) {
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
+function buildCard(p) {
+  const bg = p.bg || '#1A1A2E';
+  const badgeHtml = p.badge ? `<div class="badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Hot' : p.badge === 'new' ? 'New' : `–${p.save}%`}</div>` : '';
+  return `
+    <div class="product-card fade-in" onclick="addToCart(${p.id})">
+      <div class="product-img" style="background:${bg}">
+        ${badgeHtml}
+        <span>${p.emoji}</span>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart(${p.id})">+ Add to Cart</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-pricing">
+          <span class="price-current">$${p.price.toFixed(2)}</span>
+          <span class="price-original">$${p.original.toFixed(2)}</span>
+          <span class="price-save">–${p.save}%</span>
+        </div>
+        <div class="stars">${renderStars(p.stars)}<span class="reviews">(${p.reviews.toLocaleString()})</span></div>
+      </div>
+    </div>
+  `;
+}
+
+// Render products
+document.getElementById('products-grid').innerHTML =
+  products.filter(p => p.section === 'best').map(buildCard).join('');
+document.getElementById('new-arrivals-grid').innerHTML =
+  products.filter(p => p.section === 'new').map(buildCard).join('');
+
+// ─── CART LOGIC ───
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(i => i.id === id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...product, qty: 1 });
+  }
+  updateCartUI();
+  showToast(`✓ ${product.name} added to cart`);
+  openCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  updateCartUI();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else updateCartUI();
+}
+
+function updateCartUI() {
+  const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cart-count').textContent = totalItems;
+
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const shipping = subtotal >= 49 ? 0 : 4.99;
+  const total = subtotal + shipping;
+
+  document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('cart-shipping').textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2);
+  document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+
+  const freeShipNote = document.getElementById('shipping-note');
+  const amountToFree = document.getElementById('amount-to-free');
+  if (subtotal >= 49) {
+    freeShipNote.textContent = '🎉 You\'ve unlocked free shipping!';
+    freeShipNote.style.background = 'rgba(45,122,79,0.12)';
+  } else {
+    freeShipNote.innerHTML = 'Add $<span id="amount-to-free">' + (49 - subtotal).toFixed(2) + '</span> more for free shipping!';
+  }
+
+  const listEl = document.getElementById('cart-items-list');
+  const footer = document.getElementById('cart-footer');
+  const emptyEl = document.getElementById('empty-cart');
+
+  if (cart.length === 0) {
+    listEl.innerHTML = '';
+    listEl.appendChild(emptyEl);
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'block';
+  listEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
+    </div>
+  `).join('');
+}
+
+function openCart() {
+  document.getElementById('cart-panel').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cart-panel').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Initialize
+updateCartUI();
+</script>
+</body>
+</html>
